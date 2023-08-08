@@ -1,0 +1,15 @@
+main.c:96:6:fast_blinky	16	static
+main.c:101:6:error_led_blinky	8	static
+main.c:110:6:slow_blinky	16	static
+main.c:116:6:led_on	16	static
+main.c:119:6:led_off	16	static
+main.c:123:6:soft_start	16	static
+main.c:138:6:idle	8	static
+main.c:148:6:run	16	static
+main.c:162:6:error	8	static
+main.c:169:6:HAL_GPIO_EXTI_Callback	16	static
+main.c:183:5:main	8	static
+main.c:249:6:SystemClock_Config	72	static
+main.c:285:13:MX_TIM3_Init	64	static
+main.c:344:13:MX_GPIO_Init	40	static
+main.c:389:6:Error_Handler	4	static,ignoring_inline_asm
