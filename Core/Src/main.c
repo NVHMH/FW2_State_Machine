@@ -121,17 +121,18 @@ void led_off(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin){
 }
 
 void soft_start(){
-	if (Flash_Read_Uint(_PAGE_127_) == (ERROR_STATE)) {
 
-				return;
-	}
-	Flash_Write_Uint((SOFT_START), _PAGE_127_);
+//	Flash_Write_Uint((SOFT_START), _PAGE_127_);
 	int i = 10;
 	htim3.Instance->CCR1 = 0;
 	while (i!=0){
 		fast_blinky(GPIOx_LED1, PIN_LED1);
 		i--;
 	}
+	if (Flash_Read_Uint(_PAGE_127_) == (ERROR_STATE)) {
+
+					return;
+		}
 	Flash_Write_Uint((IDLE), _PAGE_127_);
 }
 
@@ -209,7 +210,7 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 
 //  Flash_Write_Uint((!NON_ERROR), _PAGE_127_);
-
+  	  soft_start();
 
   /* USER CODE END 2 */
 
@@ -225,9 +226,9 @@ int main(void)
 	  	  case ERROR_STATE:
 	  		error();
 	  		break;
-	  	  case SOFT_START:
-	  		soft_start();
-	  		break;
+//	  	  case SOFT_START:
+//	  		soft_start();
+//	  		break;
 	  	  case IDLE:
 	  		idle();
 	  		break;
